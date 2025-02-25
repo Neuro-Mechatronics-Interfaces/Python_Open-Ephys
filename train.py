@@ -140,7 +140,6 @@ if __name__ == "__main__":
     config_path = "/mnt/c/Users/NML/Desktop/hdemg_test/Jonathan/2024_11_11/CONFIG.txt"
 
     cfg = emg_proc.read_config_file(config_path)
-
     X_tensor, y_tensor = load_emg_data(config_path)
 
     # Dynamically adjust num_classes

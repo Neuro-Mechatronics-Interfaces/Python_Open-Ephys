@@ -1,5 +1,6 @@
 # Replace the paths with your own paths
-root_directory=C:\Users\HP\Documents\Open Ephys\Jonathan\2025_02_10 # /mnt/c/Users/path/to/raw/data
+#root_directory=C:\Users\HP\Documents\Open Ephys\Jonathan\2025_02_10 # /mnt/c/Users/path/to/raw/data
+root_directory=G:\My Drive\CMU\HDEMG
 
 # File names
 metrics_filename=raw_data_metrics.csv

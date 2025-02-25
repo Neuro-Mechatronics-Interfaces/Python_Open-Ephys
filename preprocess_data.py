@@ -359,7 +359,6 @@ class PreProcess:
                         self.stop_channel_loop = False  # Reset the flag for the next channel
                         break
                     print(f"Plotting channel {channel_name}...")
-                    #self.plot_emg_channel(car_data[channel_index, :], time_vector, channel_name, sampling_rate, filename)
                     self.plot_emg_channel(grid_data[channel_index, :], time_vector, channel_name, sampling_rate, filename)
 
                 # === Prompt for N_trials and trial_interval after the loop stops ===
