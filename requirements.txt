@@ -1,0 +1,8 @@
+scikit-learn
+pandas
+open-ephys-python-tools
+PyWavelets
+#numpy==2.1.3
+matplotlib
+pyserial
+pyzmq

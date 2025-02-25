@@ -1,0 +1,8 @@
+# Virtual environments
+.ephys
+.venv
+.idea
+__pycache__
+
+# Temprary data folder
+data
