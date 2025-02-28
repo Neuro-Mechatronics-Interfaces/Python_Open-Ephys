@@ -4,5 +4,6 @@
 .idea
 __pycache__
 
-# Temprary data folder
-data
+# Tempraryfolders
+data/
+/.temp/

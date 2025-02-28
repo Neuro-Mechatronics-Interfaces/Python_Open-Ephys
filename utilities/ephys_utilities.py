@@ -4,7 +4,7 @@ Author: Jonathan SHulgach
 Last Updated: 02/25/2025
 
 """
-
+import os
 import zmq
 import json
 import uuid
@@ -287,22 +287,19 @@ class OpenEphysClient(object):
                 latest_samples.append(0)
         return latest_samples
 
-def load_file(filepath, verbose=False):
+def load_file(folder_path, verbose=False):
     """Load an Open Ephys file and return the data as a dictionary, matching the style of the intan .rhd files"""
-    session = Session(filepath)
-    #if verbose:
-    #    print(session)
+    # Check if it is a valid directory
+    if not os.path.isdir(folder_path):
+        print(f"Error: {folder_path} is not a valid directory.")
+        return None, False
+
+    print("\nReading Open Ephys Data File...")
+    t_start = time.time()
+
+    session = Session(folder_path)
     recording = session.recordnodes[0].recordings[0] # Loads sample numbers, timestamps, and metadata
-    #print(dir(recording))
-    #print(recording.info)
-    #print(dir(recording.continuous[0]))
 
-    #continuous = recording.continuous[0]
-    #print()
-
-    #print(continuous.sample_rate)
-
-    #print("before data dict")
     # Create and full a numpy array from the data contained in continuous where each row corresponds to the data for that channel
     data = {'amplifier_data': np.array(recording.continuous[0].samples, dtype=np.float32),
          't_amplifier': np.array(recording.continuous[0].timestamps, dtype=np.float64),
@@ -314,7 +311,7 @@ def load_file(filepath, verbose=False):
          'continuous': recording.continuous[0],
          }
 
-    for i in data['info']:
-        print(f"{i}: {data['info'][i]}\n")
-
+    #for i in data['info']:
+    #    print(f"{i}: {data['info'][i]}\n")
+    print(f"Done!  Elapsed time: {time.time() - t_start:.2f} seconds")
     return data, True
